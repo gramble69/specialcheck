@@ -98,6 +98,7 @@ int sieve_sum(int a)
         {
             not_prime[b] = 1;
         }
-        printf("the sum is %d",sum);
+        
     }
+    printf("the sum is %d",sum);
 }
