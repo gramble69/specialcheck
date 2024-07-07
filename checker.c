@@ -38,23 +38,7 @@ int prime_list(int a)
     }
     return 0;
 }
-int sieve(int a)
-{
-    const int max = 999999;
-    char not_prime[max] = {};
-    for (int i = 2; i < a; i++)
-    {
-        if (not_prime[i])
-        {
-            continue;
-        }
-        printf("%d is prime\n", i);
-        for (int b = i + i; b < max; b += i)
-        {
-            not_prime[b] = 1;
-        }
-    }
-}
+
 int prime_list_sum(int a)
 {
     int sum = 0;
@@ -79,4 +63,41 @@ int prime_list_sum(int a)
     }
     printf("%d is the sum", sum);
     return 0;
+}
+int sieve(int a)
+{
+    const int max = 999999;
+    char not_prime[max] = {};
+    for (int i = 2; i < a; i++)
+    {
+        if (not_prime[i])
+        {
+            continue;
+        }
+        printf("%d is prime\n", i);
+        for (int b = i + i; b < max; b += i)
+        {
+            not_prime[b] = 1;
+        }
+    }
+}
+int sieve_sum(int a)
+{
+    int sum = 0;
+    const int max = 999999;
+    char not_prime[max] = {};
+    for (int i = 2; i < a; i++)
+    {
+        if (not_prime[i])
+        {
+            continue;
+        }
+        printf("%d is prime\n", i);
+        sum = sum + i;
+        for (int b = i + i; b < max; b += i)
+        {
+            not_prime[b] = 1;
+        }
+        printf("the sum is %d",sum);
+    }
 }

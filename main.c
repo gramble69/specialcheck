@@ -4,7 +4,7 @@ int true = 1;
 
 
 int main(){
-    sieve(50);
+    sieve_sum(10);
     
     return 0;
 }
