@@ -1,4 +1,8 @@
 #include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+
 int check_prime(int a)
 {
     for (int b = 2; 1; b++)
@@ -66,9 +70,11 @@ int prime_list_sum(int a)
 }
 int sieve(int a)
 {
-    const int max = 999999;
-    char not_prime[max] = {};
-    for (int i = 2; i < a; i++)
+    const int max = 99999999;
+    //char not_prime[max] = {};
+    char* not_prime = (char*)malloc(max*sizeof(char));
+    memset(not_prime, 0,max);
+    for (int i = 2; i < a && i< max; i++)
     {
         if (not_prime[i])
         {
@@ -80,12 +86,16 @@ int sieve(int a)
             not_prime[b] = 1;
         }
     }
+    free(not_prime);
 }
 int sieve_sum(int a)
 {
-    int sum = 0;
-    const int max = 999999;
-    char not_prime[max] = {};
+    int64_t sum = 0;
+    const int max = 99999999;
+    //char not_prime[max] = {};
+    char* not_prime = (char*)malloc(max*sizeof(char));
+    int n = 0;
+    memset(not_prime, 0,max);
     for (int i = 2; i < a; i++)
     {
         if (not_prime[i])
@@ -94,11 +104,13 @@ int sieve_sum(int a)
         }
         printf("%d is prime\n", i);
         sum = sum + i;
+        n++;
         for (int b = i + i; b < max; b += i)
         {
             not_prime[b] = 1;
         }
         
     }
-    printf("the sum is %d",sum);
+    printf("the sum is %lld of %d",sum, n);
+    free(not_prime);
 }
